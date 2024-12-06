@@ -1,0 +1,688 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hi there",
+        "Hello",
+        "Good day",
+        "How's it going?",
+        "What's up?",
+        "Hey",
+        "Hello there",
+        "Greetings",
+        "How are you?",
+        "Is anyone there?",
+        "Howdy",
+        "Hi, how can I reach you?",
+        "Hi bot!"
+      ],
+      "responses": [
+        "Hello, thanks for asking!",
+        "Good to see you again!",
+        "Hi there, how can I help?",
+        "Hey! How can I assist you today?",
+        "Hello! What can I do for you?",
+        "Hi there! Hope you're having a great day.",
+        "Greetings! How may I assist?",
+        "Hello, friend! What do you need help with?"
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Nice chatting to you, bye",
+        "Till next time",
+        "Catch you later",
+        "I'm leaving, bye",
+        "Goodbye, have a nice day!",
+        "See ya",
+        "Peace out",
+        "Bye for now",
+        "Talk to you soon",
+        "Take care, bye",
+        "I'm out, bye"
+      ],
+      "responses": [
+        "See you!",
+        "Have a nice day!",
+        "Bye! Come back again soon.",
+        "Goodbye! Take care.",
+        "See you later! Let me know if you need more help.",
+        "Bye! Hope to talk again soon.",
+        "Take care and have a great day!"
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Awesome, thanks",
+        "Thanks for helping me",
+        "Much appreciated",
+        "Thank you so much",
+        "I'm grateful",
+        "Thanks a ton",
+        "I appreciate it",
+        "Thank you kindly",
+        "Thanks a lot",
+        "Cheers",
+        "Many thanks"
+      ],
+      "responses": [
+        "Happy to help!",
+        "Any time!",
+        "My pleasure.",
+        "You're welcome!",
+        "Glad I could assist!",
+        "No problem! Let me know if there's anything else.",
+        "Always here to help!",
+        "You're very welcome.",
+        "It's my pleasure to assist!"
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "noanswer",
+      "patterns": [
+        "I don't understand",
+        "Can you clarify?",
+        "This doesn't make sense",
+        "What do you mean?",
+        "Please explain",
+        "Sorry, I'm confused",
+        "Could you rephrase?",
+        "I need more details",
+        "I'm not sure what you're saying",
+        "What does that mean?",
+        "I don't get it",
+        "Could you elaborate?",
+        "Explain more, please",
+        "I don't follow",
+        "Can you tell me in another way?"
+      ],
+      "responses": [
+        "Sorry, I can't understand you. Could you clarify?",
+        "Please provide more info.",
+        "I'm not sure I understand. Could you explain?",
+        "I didn't quite get that. Could you say it differently?",
+        "Sorry, I couldn't catch that. Could you elaborate?",
+        "Could you be more specific, please?",
+        "I’m not sure what you mean. Could you rephrase?",
+        "Sorry, I don’t have the information for that."
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "options",
+      "patterns": [
+        "How can you help me?",
+        "What can you do?",
+        "What help do you provide?",
+        "How can you assist me?",
+        "What support is available?",
+        "What are your features?",
+        "Tell me how you can help",
+        "Can you tell me what you can do?",
+        "What services do you offer?",
+        "How do you assist users?",
+        "What can you help with?",
+        "What options do you provide?"
+      ],
+      "responses": [
+        "I can help with Adverse drug reaction lists, Blood pressure tracking, Hospitals, and Pharmacies. Just ask!",
+        "I provide support for Adverse drug reactions, Blood pressure, Hospitals, and Pharmacies. How can I help?",
+        "You can ask me about drug reactions, blood pressure, or nearby hospitals and pharmacies.",
+        "I’m here to assist with healthcare needs like blood pressure monitoring, drug reaction information, and more.",
+        "I can support you with tracking blood pressure, finding pharmacies, and checking for adverse drug reactions."
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "search_patient_details",
+      "patterns": [
+        "Show me the patient's details",
+        "I need details about the patient",
+        "Retrieve patient information",
+        "Can I see the patient's profile?",
+        "Get patient info",
+        "Can you fetch patient details?",
+        "Give me information on the patient",
+        "Access patient profile",
+        "How can I retrieve patient info?",
+        "I need patient data",
+        "Find details about the patient",
+        "Can you get patient details for me?"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve details.",
+        "Could you share the Patient ID?",
+        "I need a Patient ID to fetch the details.",
+        "Sure, let me know the Patient ID.",
+        "Provide the Patient ID, and I’ll get the details.",
+        "I’ll need the Patient ID to retrieve the patient profile.",
+        "Please share the Patient ID for accessing the details."
+      ],
+      "context": ["fetch_patient_details"]
+    },
+
+    {
+      "tag": "fetch_patient_details",
+      "patterns": [
+        "Patient ID is {pid}",
+        "ID: {pid}",
+        "The patient ID is {pid}",
+        "Here is the ID {pid}",
+        "Fetch details for Patient ID {pid}",
+        "Can you get details for ID {pid}?",
+        "I need patient details for {pid}",
+        "Retrieve patient information for {pid}",
+        "Show me details for ID {pid}"
+      ],
+      "responses": ["Retrieving details for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_patient_details"]
+    },
+    {
+      "tag": "search_medical_condition",
+      "patterns": [
+        "Show me the patient's medical condition",
+        "What medical condition does the patient have?",
+        "Get patient diagnosis",
+        "Retrieve the patient's condition",
+        "I need the patient’s diagnosis",
+        "Can you show me the patient’s condition?",
+        "What is the medical condition for the patient?",
+        "Fetch the patient’s diagnosis information",
+        "Get the condition details for the patient"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve medical condition details.",
+        "Patient ID is required to fetch the medical condition.",
+        "Can you share the Patient ID to get the condition details?",
+        "Provide the Patient ID to retrieve the medical condition."
+      ],
+      "context": ["fetch_medical_condition"]
+    },
+    {
+      "tag": "fetch_medical_condition",
+      "patterns": [
+        "Patient ID is {pid}",
+        "ID: {pid}",
+        "Medical condition for ID {pid}",
+        "Get medical details for ID {pid}",
+        "Fetch condition details for Patient ID {pid}",
+        "Show condition information for {pid}",
+        "Here is the patient ID {pid} for medical condition",
+        "Retrieve condition for ID {pid}",
+        "Condition details for Patient ID {pid}"
+      ],
+      "responses": ["Retrieving medical condition for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_medical_condition"]
+    },
+    {
+      "tag": "search_medication",
+      "patterns": [
+        "Show the patient's current medication",
+        "What medications is the patient taking?",
+        "List patient’s medication",
+        "Drugs prescribed to the patient",
+        "Can you retrieve the medications for the patient?",
+        "I need the current medication for the patient",
+        "What are the prescribed drugs for this patient?",
+        "Get the list of patient’s medications",
+        "Show me what the patient is taking"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve medication records.",
+        "Patient ID is required to fetch medication details.",
+        "Can you share the Patient ID to get the medication list?",
+        "Provide the Patient ID to retrieve prescribed medications."
+      ],
+      "context": ["fetch_medication"]
+    },
+    {
+      "tag": "fetch_medication",
+      "patterns": [
+        "Patient ID is {pid}",
+        "ID: {pid}",
+        "The medication for patient ID {pid}",
+        "Fetch medication details for Patient ID {pid}",
+        "Retrieve medications for ID {pid}",
+        "Show me drugs for Patient ID {pid}",
+        "Here is the ID {pid} for medications",
+        "Get medication list for Patient ID {pid}",
+        "Prescribed drugs for Patient ID {pid}"
+      ],
+      "responses": ["Retrieving medication details for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_medication"]
+    },
+    {
+      "tag": "search_appointment",
+      "patterns": [
+        "Show me the patient’s appointments",
+        "What are the upcoming appointments?",
+        "List the patient’s appointment schedule",
+        "Retrieve the patient’s appointment details",
+        "Fetch appointment details for the patient",
+        "What appointments does the patient have?",
+        "I need to see the patient’s appointment records",
+        "Can you list the upcoming appointments?",
+        "Get appointment details for the patient"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve appointment records.",
+        "Patient ID is required to fetch the appointment schedule.",
+        "Share the Patient ID to get the appointment list.",
+        "Provide the Patient ID to retrieve upcoming appointments."
+      ],
+      "context": ["fetch_appointment"]
+    },
+    {
+      "tag": "fetch_appointment",
+      "patterns": [
+        "Patient ID is {pid}",
+        "ID: {pid}",
+        "The appointment details for patient ID {pid}",
+        "Retrieve appointments for ID {pid}",
+        "Fetch schedule for Patient ID {pid}",
+        "Show me appointments for Patient ID {pid}",
+        "Here is the ID {pid} for appointments",
+        "Get the appointment list for Patient ID {pid}",
+        "Upcoming appointments for Patient ID {pid}"
+      ],
+      "responses": ["Retrieving appointment details for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_appointment"]
+    },
+    {
+      "tag": "update_patient_details",
+      "patterns": [
+        "Update the patient’s details",
+        "Can you modify the patient’s record?",
+        "Change the patient’s profile information",
+        "Edit the details for the patient",
+        "I need to update patient information",
+        "How do I update the patient’s record?",
+        "Modify the patient’s profile",
+        "Update the details for patient ID {pid}",
+        "Can I change the patient’s information?"
+      ],
+      "responses": [
+        "Please provide the Patient ID and the new details to update the record.",
+        "Patient ID is required to update the profile. Can you provide it?",
+        "Share the Patient ID and the updated information to modify the details.",
+        "Provide the Patient ID along with new data to update the patient’s profile."
+      ],
+      "context": [""],
+      "actions": ["update_patient_details"]
+    },
+    {
+      "tag": "search_billing_info",
+      "patterns": [
+        "Show me the billing amount",
+        "How much is the patient's bill?",
+        "Retrieve billing details",
+        "Billing amount for the patient",
+        "What is the patient's outstanding bill?",
+        "Can you show the patient's bill?",
+        "I need the billing details for the patient",
+        "Get billing information",
+        "How much does the patient owe?",
+        "Fetch the patient's billing info"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve billing information."
+      ],
+      "context": ["fetch_billing_info"]
+    },
+    {
+      "tag": "fetch_billing_info",
+      "patterns": [
+        "Patient ID is {pid}",
+        "Billing details for ID {pid}",
+        "ID {pid} billing info",
+        "Retrieve bill for ID {pid}",
+        "Show me the billing details for Patient ID {pid}",
+        "Get the billing amount for Patient ID {pid}",
+        "Fetch the billing info for {pid}",
+        "Billing information for patient {pid}"
+      ],
+      "responses": ["Retrieving billing information for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_billing_info"]
+    },
+    {
+      "tag": "search_test_results",
+      "patterns": [
+        "Show the patient's test results",
+        "What are the test results?",
+        "Retrieve test results for the patient",
+        "Can you show me the test reports?",
+        "I need the test results for the patient",
+        "Get the patient's lab reports",
+        "Fetch the patient’s diagnostics",
+        "What are the results of the patient's tests?",
+        "List the medical test results for the patient",
+        "Show me the patient’s diagnostics"
+      ],
+      "responses": ["Please provide the Patient ID to retrieve test results."],
+      "context": ["fetch_test_results"]
+    },
+    {
+      "tag": "fetch_test_results",
+      "patterns": [
+        "Patient ID is {pid}",
+        "ID {pid} test results",
+        "Patient's test results for ID {pid}",
+        "Retrieve diagnostics for Patient ID {pid}",
+        "Show lab reports for ID {pid}",
+        "Get the diagnostics for Patient ID {pid}",
+        "Fetch the test results for ID {pid}",
+        "The test results for Patient ID {pid}",
+        "Here is the Patient ID {pid} for test results"
+      ],
+      "responses": ["Retrieving test results for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_test_results"]
+    },
+    {
+      "tag": "search_insurance_info",
+      "patterns": [
+        "Show me the patient's insurance provider",
+        "Who is the patient's insurer?",
+        "Retrieve insurance details",
+        "Insurance information for the patient",
+        "Fetch the patient’s insurance information",
+        "What insurance does the patient have?",
+        "Can you show me the patient’s insurance?",
+        "I need the insurance details for the patient",
+        "Get the insurer information for the patient",
+        "Who is covering the patient’s insurance?"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve insurance information."
+      ],
+      "context": ["fetch_insurance_info"]
+    },
+    {
+      "tag": "fetch_insurance_info",
+      "patterns": [
+        "Patient ID is {pid}",
+        "Insurance for ID {pid}",
+        "ID {pid} insurance info",
+        "Retrieve insurance details for Patient ID {pid}",
+        "Show me the insurer for Patient ID {pid}",
+        "Insurance details for ID {pid}",
+        "Fetch the insurance info for ID {pid}",
+        "Here is the ID {pid} for insurance details"
+      ],
+      "responses": ["Retrieving insurance information for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_insurance_info"]
+    },
+    {
+      "tag": "search_admission_info",
+      "patterns": [
+        "Show me the patient's admission information",
+        "When was the patient admitted?",
+        "Get details of admission",
+        "Admission details for the patient",
+        "Retrieve the admission record",
+        "Can you show the admission date for the patient?",
+        "I need the patient’s admission details",
+        "Get admission information for the patient",
+        "When did the patient get admitted?",
+        "Show me the admission info for the patient"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve admission information."
+      ],
+      "context": ["fetch_admission_info"]
+    },
+    {
+      "tag": "fetch_admission_info",
+      "patterns": [
+        "Patient ID is {pid}",
+        "Admission details for ID {pid}",
+        "The admission info for ID {pid}",
+        "Retrieve admission record for Patient ID {pid}",
+        "Show admission date for Patient ID {pid}",
+        "Fetch the admission details for Patient ID {pid}",
+        "Here is the Patient ID {pid} for admission info",
+        "Admission date for ID {pid}"
+      ],
+      "responses": ["Retrieving admission information for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_admission_info"]
+    },
+    {
+      "tag": "search_discharge_info",
+      "patterns": [
+        "When was the patient discharged?",
+        "Show the discharge date",
+        "Retrieve patient discharge information",
+        "Get the discharge record for the patient",
+        "What is the discharge date for the patient?",
+        "Fetch discharge details for the patient",
+        "I need the patient’s discharge information",
+        "Can you get the discharge details?",
+        "Show me when the patient was discharged",
+        "Retrieve the discharge date for the patient"
+      ],
+      "responses": [
+        "Please provide the Patient ID to retrieve discharge information."
+      ],
+      "context": ["fetch_discharge_info"]
+    },
+    {
+      "tag": "fetch_discharge_info",
+      "patterns": [
+        "Patient ID is {pid}",
+        "Discharge details for ID {pid}",
+        "ID {pid} discharge date",
+        "Retrieve discharge record for Patient ID {pid}",
+        "Show me discharge details for Patient ID {pid}",
+        "Get the discharge info for Patient ID {pid}",
+        "Here is the ID {pid} for discharge details",
+        "Discharge information for Patient ID {pid}"
+      ],
+      "responses": ["Retrieving discharge information for Patient ID: {pid}."],
+      "context": [""],
+      "actions": ["fetch_discharge_info"]
+    },
+    {
+      "tag": "adverse_drug",
+      "patterns": [
+        "Affect of adverse drugs",
+        "List of drugs causing adverse effects",
+        "Open adverse drugs module",
+        "Give me a list of adverse drugs",
+        "Which drugs cause adverse reactions?",
+        "Any drugs without adverse reactions?",
+        "Find drugs with adverse effects",
+        "Search for drugs causing reactions",
+        "Tell me about adverse drug reactions",
+        "Adverse effects of medication"
+      ],
+      "responses": [
+        "Navigating to Adverse Drug Reactions module. Please specify if you'd like to see details for a specific drug or patient.",
+        "I can provide information on adverse reactions for specific drugs or patient cases. Let me know how I can assist.",
+        "Opening the Adverse Drug Reactions module. Let me know if you're searching by drug name or patient ID.",
+        "Providing information about adverse drug reactions. Do you have a specific drug in mind?"
+      ],
+      "context": [""],
+      "actions": ["open_adverse_drug_module"]
+    },
+    {
+      "tag": "blood_pressure",
+      "patterns": [
+        "Open blood pressure module",
+        "Task related to blood pressure",
+        "Blood pressure data entry",
+        "I want to log blood pressure results",
+        "Blood pressure data management",
+        "Manage blood pressure records",
+        "Access blood pressure data",
+        "Blood pressure monitoring",
+        "Where can I enter blood pressure details?"
+      ],
+      "responses": [
+        "Navigating to Blood Pressure module.",
+        "Opening the Blood Pressure module. Let me know what task you want to perform.",
+        "Sure, accessing the Blood Pressure module for you."
+      ],
+      "context": [""],
+      "actions": ["open_blood_pressure_module"]
+    },
+    {
+      "tag": "blood_pressure_search",
+      "patterns": [
+        "I want to search for blood pressure result history",
+        "Blood pressure for patient",
+        "Load patient blood pressure result",
+        "Show blood pressure results for patient",
+        "Find blood pressure results by ID",
+        "Search for patient’s blood pressure history",
+        "Check blood pressure readings for a patient",
+        "I need to see blood pressure data for a patient"
+      ],
+      "responses": [
+        "Please provide Patient ID.",
+        "Could you give me the Patient ID to retrieve blood pressure results?",
+        "Patient ID is required to fetch the blood pressure data.",
+        "Sure, share the Patient ID to continue."
+      ],
+      "context": ["search_blood_pressure_by_patient_id"]
+    },
+    {
+      "tag": "search_blood_pressure_by_patient_id",
+      "patterns": [
+        "Patient ID is {pid}",
+        "Blood pressure for ID {pid}",
+        "Here’s the ID for BP check {pid}",
+        "Fetch blood pressure results for ID {pid}",
+        "Load blood pressure readings for {pid}",
+        "Find BP data for Patient ID {pid}"
+      ],
+      "responses": [
+        "Loading blood pressure results for Patient ID: {pid}.",
+        "Retrieving blood pressure data for Patient ID: {pid}.",
+        "Fetching blood pressure readings for Patient ID: {pid}. Please wait."
+      ],
+      "context": [""],
+      "actions": ["fetch_blood_pressure"]
+    },
+    {
+      "tag": "pharmacy_search",
+      "patterns": [
+        "Find nearby pharmacy",
+        "Locate a pharmacy",
+        "Search for pharmacies",
+        "Find pharmacy by name",
+        "Where is the closest pharmacy?",
+        "Can you help me locate a pharmacy?",
+        "Show me pharmacies nearby",
+        "Search for a specific pharmacy",
+        "Locate pharmacy in my area"
+      ],
+      "responses": [
+        "Sure, I can help you find a pharmacy nearby. Please let me know the name if you have one in mind, or specify a location for better results.",
+        "Looking for a pharmacy? Just provide a name or location to get started.",
+        "Searching for pharmacies. Do you have a specific name or location in mind?",
+        "Let me help you find a pharmacy. Provide more details like the name or area."
+      ],
+      "context": ["search_pharmacy_by_name"]
+    },
+    {
+      "tag": "search_pharmacy_by_name",
+      "patterns": [
+        "Pharmacy name is {name}",
+        "Here’s the pharmacy name: {name}",
+        "Search for pharmacy: {name}",
+        "Find pharmacy with the name {name}",
+        "I need details about the pharmacy {name}",
+        "Search for a pharmacy called {name}"
+      ],
+      "responses": [
+        "Got it! Retrieving information for pharmacy '{name}'.",
+        "Loading details for pharmacy '{name}'. Please hold on.",
+        "Fetching information about the pharmacy named '{name}'.",
+        "Searching for the pharmacy '{name}'. One moment."
+      ],
+      "context": [""],
+      "actions": ["search_pharmacy"]
+    },
+    {
+      "tag": "hospital_search",
+      "patterns": [
+        "Find a hospital",
+        "Search hospital details",
+        "Locate a hospital for transfer",
+        "Look up hospital",
+        "Help me find a hospital",
+        "Where is the nearest hospital?",
+        "Show me a hospital nearby",
+        "I need hospital information",
+        "Find a hospital for admission",
+        "Can you locate a hospital?"
+      ],
+      "responses": [
+        "Looking for hospital information? Please provide the name or location to narrow down the results.",
+        "I can help locate hospitals. Do you have a name, type, or specific location in mind?",
+        "Searching for hospitals. Let me know if you want to filter by location, name, or type."
+      ],
+      "context": ["search_hospital_by_params"]
+    },
+    {
+      "tag": "search_hospital_by_params",
+      "patterns": [
+        "Hospital name is {name}",
+        "Location for hospital search: {location}",
+        "Here’s the hospital name: {name}",
+        "Find hospital in {location}",
+        "Search for a hospital named {name}",
+        "I need hospitals near {location}",
+        "Show me hospitals in {location}",
+        "Locate a hospital named {name}"
+      ],
+      "responses": [
+        "Got it! Let me know if there’s a specific type of hospital you’re looking for (like general, specialty, etc.).",
+        "Searching for hospitals in {location} or named {name}. Do you want to specify a type?",
+        "Loading hospital information for '{name}' or in '{location}'. Do you have a specific hospital type in mind?"
+      ],
+      "context": ["search_hospital_by_type"]
+    },
+    {
+      "tag": "search_hospital_by_type",
+      "patterns": [
+        "Hospital type is {type}",
+        "Searching for {type} hospital",
+        "I need a {type} hospital",
+        "Locate a {type} hospital",
+        "Show me {type} hospitals nearby",
+        "Find {type} hospitals in {location}",
+        "Are there {type} hospitals in this area?",
+        "Search for {type} hospital details"
+      ],
+      "responses": [
+        "Loading details for a '{type}' hospital. One moment please.",
+        "Searching for '{type}' hospitals. Please wait while I retrieve the details.",
+        "Fetching information about '{type}' hospitals. This will just take a moment.",
+        "Retrieving details for '{type}' hospitals. Please hold on."
+      ],
+      "context": [""],
+      "actions": ["search_hospital"]
+    }
+  ]
+}

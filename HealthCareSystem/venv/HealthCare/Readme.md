@@ -1,5 +1,6 @@
 # Install required packages
 Run: pip install -r requirements.txt
+# Install Nltk package for stopwords, lemmetization , punctuations..etc.,
 # Require MongoDb Database connection
 # First Intents.json Dataset Check Whether its available
 # Install nltk package
